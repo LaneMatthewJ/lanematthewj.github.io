@@ -17,6 +17,7 @@ export const Portfolio = () => {
     { name: 'Software', value: 'software' },
     { name: 'Course Material', value: 'courseMaterial' },
     { name: 'Publications', value: 'journal' },
+    { name: 'Posters/Talks', value: 'conference' },
   ];
 
 

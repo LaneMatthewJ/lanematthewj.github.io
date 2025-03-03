@@ -13,7 +13,7 @@ const introdata = {
         third: "I love teaching others to code",
     },
     description: "I write a lot of software for scientific analysis while I pursue my PhD in Data Science at the University of Tennessee Knoxville.",
-    your_img_url: "https://www.github.com/lanematthewj/lanematthewj.github.io/",
+    your_img_url: "https://pasc24.pasc-conference.org/wp-content/uploads/2024/06/U9A1410-copia-1-1024x683.jpg",
 };
 
 const dataabout = {
@@ -133,7 +133,7 @@ const services = [
 const journalsAndBooks =[
     {
         title: "Multi-omic network analysis identifies dysregulated neurobiological pathways in opioid addiction",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/network_analysis_opioid_addiction.png?raw=true",
         type: "journal",
         journal: "Biological Psychiatry",
         date: "November 2024",
@@ -142,7 +142,7 @@ const journalsAndBooks =[
     },
     {
         title: "Analyses of GWAS signal using GRIN identify additional genes contributing to suicidal behavior",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/GRIN_for_GWAS.png?raw=true",
         type: "journal",
         journal: "Communications Biology",
         date: "21 October 2024",
@@ -152,7 +152,7 @@ const journalsAndBooks =[
 
     {
         title: "Exploring the role of plant lysin motif receptor-like kinases in regulating plant-microbe interactions in the bioenergy crop Populus",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/plant_lysin_motif_receptor_like_kinase.png?raw=true",
         type: "journal",
         journal: "Computational and Structural Biotechnology Journal",
         date: "2023",
@@ -162,7 +162,7 @@ const journalsAndBooks =[
 
     {
         title: "A glimpse into the fungal metabolomic abyss: Novel network analysis reveals relationships between exogenous compounds and their outputs",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/glimpse_into_fungal_metabolome.png?raw=true",
         type: "journal",
         journal: "PNAS Nexus",
         date: "2023-09-29",
@@ -171,7 +171,7 @@ const journalsAndBooks =[
     },
     {
         title: "Longitudinal Effects on Plant Species Involved in Agriculture and Pandemic Emergence Undergoing Changes in Abiotic Stress",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/abiotic_stress_climatype.png?raw=true",
         type: "journal",
         journal: "Conference paper: PASC 2023",
         date: "26 June 2023",
@@ -180,7 +180,7 @@ const journalsAndBooks =[
     },
     {
         title: "Genetics of varicose veins reveals polygenic architecture and genetic overlap with arterial and venous disease",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/vericose_veins.png?raw=true",
         type: "journal",
         journal: "Nature Cardiovascular Research",
         date: "9 January 2023",
@@ -189,7 +189,7 @@ const journalsAndBooks =[
     },
     {
         title: "Antiviral Strategies Against SARS-CoV-2: A Systems Biology Approach",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/antiviral_strategies.png?raw=true",
         type: "journal",
         journal: "Methods in Molecular Biology",
         date: "2022",
@@ -198,7 +198,7 @@ const journalsAndBooks =[
     },
         {
         title: "Lipo-Chitooligosaccharides Induce Specialized Fungal Metabolite Profiles That Modulate Bacterial Growth",
-        img: "",
+            img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/lcos_with_metnet.png?raw=true",
         type: "journal",
         journal: "mSystems",
         date: "20 December 2022",
@@ -208,7 +208,7 @@ const journalsAndBooks =[
     },
     {
         title: "Eyeing the patterns: Data visualization using doubly- seriated color heatmaps",
-        img: "",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/heatmap_chapter.png?raw=true",
         type: "journal",
         journal: "Advances in Computers",
         date: "2020",
@@ -222,8 +222,9 @@ const presentations = [
 
     {
         title: "Uncovering Mechanistic Links in Substance Use Disorders: Integrative Multi-Omics and Supercomputing Approaches",
-        img: "",
-        type: "poster",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/uncovering_mechanistic_links_in_suds.png?raw=true",
+        type: "conference",
+        conferenceType: "poster",
         where: "ASHG 2024",
         date: "9 November 2024",
         topic: "HPC",
@@ -231,17 +232,19 @@ const presentations = [
     }, 
     {
         title: "Decoding the Omics Networks of Biomass",
-        img: "",
-        type: "talk",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/decoding_omics_of_biomass.png?raw=true",
+        type: "conference",
+        conferenceType: "talk",
         where: "Center For Bioenergy Innovation Annual Conference 2024",
         date: "5 June 2024",
         topic: "Multiomic Network Exploration",
-        link: "https://www.ashg.org/meetings/2024meeting/"
+        link: "https://cbi.ornl.gov/cbi-annual-meeting-features-focus-on-early-career-scientists/"
     }, 
     {
         title: "High Performance Computing Derived Biological Multiplex Network Uncovers Distinct Pathways Underlying Opioid and Nicotine Addiction",
-        img: "",
-        type: "talk",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/hpc_derived_multiplexes_talk.png?raw=true",
+        type: "conference",
+        conferenceType: "talk",
         where: "PASC 2024",
         date: "5 June 2024",
         topic: "HPC",
@@ -249,8 +252,9 @@ const presentations = [
     },
     {
         title: "High Performance Computing Derived Biological Multiplex Network Uncovers Distinct Pathways Underlying Opioid and Nicotine Addiction",
-        img: "",
-        type: "poster",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/hpc_derived_multiplexes.png?raw=true",
+        type: "conference",
+        conferenceType: "poster",
         where: "PASC 2024",
         date: "4 June 2024",
         topic: "HPC",
@@ -258,8 +262,9 @@ const presentations = [
     },
     {
         title: "Integrating Multi-Omics Data through Multiplex Networks",
-        img: "",
-        type: "poster",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/integrating_multiomics_through_multiplexes.png?raw=true",
+        type: "conference",
+        conferenceType: "poster",
         where: "NIDA Genetics 2024",
         date: "23 May 2024",
         topic: "HPC",
@@ -270,18 +275,18 @@ const presentations = [
 
 const code = [
     {
-        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/img/rwrtoolkit.png?raw=true",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/rwr_toolkit.png?raw=true",
         title: "RWRtoolkit",
         description: "Software geared towared the generation and exploration of multiplex networks.",
         type: "software",
-        date: "",
+        date: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/rwr_toolkit.png?raw=true",
         link: "https://github.com/dkainer/rwrtoolkit",
     },
 ];
 
 const courseMats = [
     {
-        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/img/helloworld_c.png?raw=true",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/linux_system_programming.png?raw=true",
         title: "Linux Systems Programming: Bash && C",
         description: "Course material for CS2700, an introduction to how to navigate linux systems, program bash scripts, and write programs engaging with the system at large in C",
         type: "courseMaterial",
@@ -290,7 +295,7 @@ const courseMats = [
         link: "https://github.com/LaneMatthewJ/linuxSystemProgramming",
     },
     {
-        img: "https://github.com/lanematthewj/lanematthewj.github.io/img/helloworld_c.png",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/advanced_web_w_js.png?raw=true",
         title: "Advanced Web Programming with Javascript",
         description: "This contains the course material for CS4140. This material starts with learning advanced ES6 Javascript, and moves onto using React and Express frameworks for web developemtn.",
         type: "courseMaterial",
@@ -299,7 +304,7 @@ const courseMats = [
         link: "https://github.com/LaneMatthewJ/advanced_web_with_javascript",
     },
     {
-        img: "https://github.com/lanematthewj/lanematthewj.github.io/img/helloworld_c.png",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/intro_to_web_programing.png?raw=true",
         title: "Introduction to Web Programming: HTML, Javascript, and PHP",
         description: "This coursework contains an introduction to web development for complete beginners CS3010. This material starts out with the basics of HTML, Javascript, and PHP.",
         type: "courseMaterial",
@@ -308,7 +313,7 @@ const courseMats = [
         link: "https://github.com/LaneMatthewJ/class_intro_to_web_with_php",
     },
     {
-        img: "https://github.com/lanematthewj/lanematthewj.github.io/img/helloworld_c.png",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/introductions_to.png?raw=true",
         title: "Introduction to []",
         description: "This is a repository contining a number of introductions for single day courses. These topics range from \"what is code\", to robotics, to unit testing.",
         type: "courseMaterial",
@@ -318,7 +323,7 @@ const courseMats = [
     },
 ]
 
-const dataportfolio = [...journalsAndBooks, ...code, ...courseMats]
+const dataportfolio = [...journalsAndBooks, ...code, ...courseMats, ...presentations]
 
 
 const socialprofils = {
