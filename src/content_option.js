@@ -13,7 +13,7 @@ const introdata = {
         third: "I love teaching others to code",
     },
     description: "I write a lot of software for scientific analysis while I pursue my PhD in Data Science at the University of Tennessee Knoxville.",
-    your_img_url: "https://pasc24.pasc-conference.org/wp-content/uploads/2024/06/U9A1410-copia-1-1024x683.jpg",
+    your_img_url: "",
 };
 
 const dataabout = {
