@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const EducationCard = ({ data, elementKey }) => {
+const educationCard = (data, elementKey) => {
     return (
         <Card key={elementKey} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={data.img} />
@@ -25,7 +25,7 @@ const EducationCard = ({ data, elementKey }) => {
 
 
 
-const SoftwareCard = ({ data, elementKey }) => {
+const softwareCard = (data, elementKey) => {
     return (
          <Card key={elementKey} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={data.img} />
@@ -46,7 +46,7 @@ const SoftwareCard = ({ data, elementKey }) => {
     )
 }
 
-const JournalCard = ({ data, elementKey }) => {
+const journalCard = (data, elementKey) => {
     return (
         <Card key={elementKey} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={data.img} />
@@ -58,16 +58,33 @@ const JournalCard = ({ data, elementKey }) => {
             </Card.Body>
             <ListGroup className="list-group-flush">
                 <ListGroup.Item>{data.language}</ListGroup.Item>
-                <ListGroup.Item>{data.topic}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-                <Card.Link href={data.link}>See Software Page</Card.Link>
+                <Card.Link href={data.link}> Access Paper </Card.Link>
             </Card.Body>
         </Card>
     )
 }
 
-
+const conferenceCard = (data, elementKey) => {
+    return (
+        <Card key={elementKey} style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={data.img} />
+            <Card.Body>
+                <Card.Title>{data.title}</Card.Title>
+                <Card.Text>
+                    {data.description}
+                </Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+                <ListGroup.Item>{data.language}</ListGroup.Item>
+            </ListGroup>
+            <Card.Body>
+                <Card.Link href={data.link}> Access Paper </Card.Link>
+            </Card.Body>
+        </Card>
+    )
+}
 
 export const PortfolioCard =({data, elementKey}) => {
     return (

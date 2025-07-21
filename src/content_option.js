@@ -7,13 +7,13 @@ const meta = {
 const introdata = {
     title: "I'm Matt Lane",
     animated: {
-        zeroth: "I love science",
-        first: "I love coding",
-        second: "I love TESTING code",
-        third: "I love teaching others to code",
+        zeroth: "Science hooks me.",
+        first: "Coding drives me.",
+        second: "Testing clicks with me.",
+        third: "Teaching code lights me up."
     },
     description: "I write a lot of software for scientific analysis while I pursue my PhD in Data Science at the University of Tennessee Knoxville.",
-    your_img_url: "",
+    your_img_url: "https://pasc24.pasc-conference.org/wp-content/uploads/2024/06/U9A1410-copia-1-1024x683.jpg",
 };
 
 const dataabout = {
@@ -41,24 +41,49 @@ const worktimeline = [{
         where: "Oak Ridge Natioanl Laboratory / UT Knoxville",
         date: "2020-2025",
         daytoday: "Python, R, Bash, Data Analysis, High Performance Computing",
+        stack: {
+            languages: ["R", "Python", "BASH"],
+            frameworks: [ "High Performance Computing (HPC)", "GPU Computing", "Docker", "Apptainer" ]  
+        },
+        responsibilities: [
+            
+        ]
+    },
+    {
+        jobtitle: "Adjunct Faculty",
+        where: "University of Missouri - St. Louis",
+        date: "2017-2020",
+        daytoday: "Javascript, React, Express, Mobile Programming",
+        responsibilities: [
+
+        ]
     },
     {
         jobtitle: "Software Engineer",
         where: "Bayer Crop Science",
         date: "2017-2020",
         daytoday: "Javascript, React, Express, Mobile Programming",
+        responsibilities: [
+
+        ]
     },
     {
         jobtitle: "Graduate Research Assistant",
         where: "University of Missouri",
-        date: "2014-2017",
-        daytoday: "C++, Combinitorics",
+        date: "2015-2017",
+        daytoday: "C++, Combinitorics, ",
+        responsibilities: [
+
+        ]
     },
     {
         jobtitle: "Outreach Educator",
         where: "Missouri Botanical Garden",
-        date: "2014-2017",
+        date: "2013-2015",
         daytoday: "Science Communication",
+        responsibilities: [
+
+        ]
     },
 ];
 
@@ -66,7 +91,7 @@ const education = [{
     degree: "Doctor of Philosophy",
     topic: "Data Science and Engineering",
     where: "University of Tennessee Knoxville",
-    date: "Anticipated: Aug 2025",
+    date: "Anticipated: Dec 2025",
 },
 {
     degree: "Master of Science",
@@ -131,6 +156,7 @@ const services = [
 ];
 
 const journalsAndBooks =[
+   
     {
         title: "Multi-omic network analysis identifies dysregulated neurobiological pathways in opioid addiction",
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/network_analysis_opioid_addiction.png?raw=true",
@@ -139,6 +165,7 @@ const journalsAndBooks =[
         date: "November 2024",
         link: "https://doi.org/10.1016/j.biopsych.2024.11.013",
         contributors: "Kyle Sullivan; David Kainer; Matthew Lane; Mikaela Cashman; J. Izaak Miller; Michael R. Garvin; Alice Townsend; Bryan C. Quach; Caryn Willis; Peter Kruse et al.",
+        description: "",
     },
     {
         title: "Analyses of GWAS signal using GRIN identify additional genes contributing to suicidal behavior",
@@ -147,9 +174,9 @@ const journalsAndBooks =[
         journal: "Communications Biology",
         date: "21 October 2024",
         link: "https://doi.org/10.1038/s42003-024-06943-7",
-        contributors: "Kyle A. Sullivan; Matthew Lane; Mikaela Cashman; J. Izaak Miller; Mirko Pavicic; Angelica M. Walker; Ashley Cliff; Jonathon Romero; Xuejun Qin; Niamh Mullins et al."
+        contributors: "Kyle A. Sullivan; Matthew Lane; Mikaela Cashman; J. Izaak Miller; Mirko Pavicic; Angelica M. Walker; Ashley Cliff; Jonathon Romero; Xuejun Qin; Niamh Mullins et al.",
+        description: "",
     },
-
     {
         title: "Exploring the role of plant lysin motif receptor-like kinases in regulating plant-microbe interactions in the bioenergy crop Populus",
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/plant_lysin_motif_receptor_like_kinase.png?raw=true",
@@ -157,7 +184,8 @@ const journalsAndBooks =[
         journal: "Computational and Structural Biotechnology Journal",
         date: "2023",
         link: "https://doi.org/10.1016/j.csbj.2022.12.052",
-        contributors: "Kevin R. Cope; Erica T. Prates; John I. Miller; Omar N.A. Demerdash; Manesh Shah; David Kainer; Ashley Cliff; Kyle Sullivan; Mikaela Cashman; Matthew Lane et al."
+        contributors: "Kevin R. Cope; Erica T. Prates; John I. Miller; Omar N.A. Demerdash; Manesh Shah; David Kainer; Ashley Cliff; Kyle Sullivan; Mikaela Cashman; Matthew Lane et al.",
+        description: "",
     },
 
     {
@@ -165,9 +193,10 @@ const journalsAndBooks =[
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/glimpse_into_fungal_metabolome.png?raw=true",
         type: "journal",
         journal: "PNAS Nexus",
-        date: "2023-09-29",
+        date: "29 September 2023",
         link: "https://doi.org/10.1093/pnasnexus/pgad322",
-        contributers: "Matthew J Lane; Muralikrishnan Gopalakrishnan Meena; Joanna Tannous; Alyssa A Carrell; Paul E Abraham; Richard J Giannone; Jean-Michel Ané; Nancy P Keller; Jesse L Labbé; Armin G Geiger et al."
+        contributers: "Matthew J Lane; Muralikrishnan Gopalakrishnan Meena; Joanna Tannous; Alyssa A Carrell; Paul E Abraham; Richard J Giannone; Jean-Michel Ané; Nancy P Keller; Jesse L Labbé; Armin G Geiger et al.",
+        description: "",
     },
     {
         title: "Longitudinal Effects on Plant Species Involved in Agriculture and Pandemic Emergence Undergoing Changes in Abiotic Stress",
@@ -176,7 +205,8 @@ const journalsAndBooks =[
         journal: "Conference paper: PASC 2023",
         date: "26 June 2023",
         link: "https://doi.org/10.1145/3592979.3593402",
-        contributors: "Mikaela Cashman; Verónica G. Melesse Vergara; John Lagergren; Matthew Lane; Jean Merlet; Mikaela Atkinson; Jared Streich; Christopher Bradburne; Raina Plowright; Wayne Joubert et al."
+        contributors: "Mikaela Cashman; Verónica G. Melesse Vergara; John Lagergren; Matthew Lane; Jean Merlet; Mikaela Atkinson; Jared Streich; Christopher Bradburne; Raina Plowright; Wayne Joubert et al.",
+        description: "",
     },
     {
         title: "Genetics of varicose veins reveals polygenic architecture and genetic overlap with arterial and venous disease",
@@ -185,7 +215,8 @@ const journalsAndBooks =[
         journal: "Nature Cardiovascular Research",
         date: "9 January 2023",
         link: "https://doi.org/10.1038/s44161-022-00196-5",
-        contributors: "Michael G. Levin; Jennifer E. Huffman; Anurag Verma; Kyle A. Sullivan; Alexis A. Rodriguez; David Kainer; Michael R. Garvin; Matthew Lane; Mikaela Cashman; J.Izaak Miller et al."
+        contributors: "Michael G. Levin; Jennifer E. Huffman; Anurag Verma; Kyle A. Sullivan; Alexis A. Rodriguez; David Kainer; Michael R. Garvin; Matthew Lane; Mikaela Cashman; J.Izaak Miller et al.",
+        description: "",
     },
     {
         title: "Antiviral Strategies Against SARS-CoV-2: A Systems Biology Approach",
@@ -194,16 +225,18 @@ const journalsAndBooks =[
         journal: "Methods in Molecular Biology",
         date: "2022",
         link: "https://doi.org/10.1007/978-1-0716-2111-0_19",
-        contributors: "Erica T. Prates; Michael R. Garvin; Piet Jones; J. Izaak Miller; Kyle A. Sullivan; Ashley Cliff; Joao Gabriel Felipe Machado Gazolla; Manesh B. Shah; Angelica M. Walker; Matthew Lane et al."
+        contributors: "Erica T. Prates; Michael R. Garvin; Piet Jones; J. Izaak Miller; Kyle A. Sullivan; Ashley Cliff; Joao Gabriel Felipe Machado Gazolla; Manesh B. Shah; Angelica M. Walker; Matthew Lane et al.",
+        description: "",
     },
         {
         title: "Lipo-Chitooligosaccharides Induce Specialized Fungal Metabolite Profiles That Modulate Bacterial Growth",
-            img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/lcos_with_metnet.png?raw=true",
+        img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/lcos_with_metnet.png?raw=true",
         type: "journal",
         journal: "mSystems",
         date: "20 December 2022",
         link: "https://doi.org/10.1128/msystems.01052-22",
-        contributors: "Tomas Rush; Joanna Tannous; Matthew J. Lane; Muralikrishnan Gopalakrishnan Meena; Alyssa A. Carrell; Jacob J. Golan; Milton T. Drott; Sylvain Cottaz; Sébastien Fort; Jean-Michel Ané et al."
+        contributors: "Tomas Rush; Joanna Tannous; Matthew J. Lane; Muralikrishnan Gopalakrishnan Meena; Alyssa A. Carrell; Jacob J. Golan; Milton T. Drott; Sylvain Cottaz; Sébastien Fort; Jean-Michel Ané et al.",
+        description: "",
 
     },
     {
@@ -213,13 +246,13 @@ const journalsAndBooks =[
         journal: "Advances in Computers",
         date: "2020",
         link: "https://doi.org/10.1016/bs.adcom.2020.03.003",
-        contributors: "Matthew Lane; Alberto Maiocco; Sanjiv K.Bhatia; Sharlee Climer"
+        contributors: "Matthew Lane; Alberto Maiocco; Sanjiv K.Bhatia; Sharlee Climer",
+        description: "",
     }
 ]
 
 
 const presentations = [
-
     {
         title: "Uncovering Mechanistic Links in Substance Use Disorders: Integrative Multi-Omics and Supercomputing Approaches",
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/uncovering_mechanistic_links_in_suds.png?raw=true",
@@ -236,7 +269,7 @@ const presentations = [
         type: "conference",
         conferenceType: "talk",
         where: "Center For Bioenergy Innovation Annual Conference 2024",
-        date: "5 June 2024",
+        date: "16 July 2024",
         topic: "Multiomic Network Exploration",
         link: "https://cbi.ornl.gov/cbi-annual-meeting-features-focus-on-early-career-scientists/"
     }, 
@@ -279,7 +312,9 @@ const code = [
         title: "RWRtoolkit",
         description: "Software geared towared the generation and exploration of multiplex networks.",
         type: "software",
-        date: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/rwr_toolkit.png?raw=true",
+        language: "R",
+        topic: "Random Walk Restart, Multiplex Networks",
+        date: "3 March 2025",
         link: "https://github.com/dkainer/rwrtoolkit",
     },
 ];
@@ -289,6 +324,9 @@ const courseMats = [
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/linux_system_programming.png?raw=true",
         title: "Linux Systems Programming: Bash && C",
         description: "Course material for CS2700, an introduction to how to navigate linux systems, program bash scripts, and write programs engaging with the system at large in C",
+        audience: "Computer Science Students",
+        level: "University",
+        topic: "Linux,C++",
         type: "courseMaterial",
         date: "June 2020",   
         meta: "bash courtesy of https://commons.wikimedia.org/wiki/File:Gnu-bash-logo.svg; C courtesy of https://commons.wikimedia.org/wiki/File:The_C_Programming_Language_logo.svg",
@@ -298,6 +336,9 @@ const courseMats = [
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/advanced_web_w_js.png?raw=true",
         title: "Advanced Web Programming with Javascript",
         description: "This contains the course material for CS4140. This material starts with learning advanced ES6 Javascript, and moves onto using React and Express frameworks for web developemtn.",
+        audience: "Computer Science Students",
+        level: "University",
+        topic: "React,Express,NodeJS",
         type: "courseMaterial",
         date: "January 2020",
         meta: "React Courtesy of https://en.wikipedia.org/wiki/File:React_Logo_SVG.svg, Express courtesy of https://commons.wikimedia.org/wiki/File:Expressjs.png",
@@ -307,6 +348,9 @@ const courseMats = [
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/intro_to_web_programing.png?raw=true",
         title: "Introduction to Web Programming: HTML, Javascript, and PHP",
         description: "This coursework contains an introduction to web development for complete beginners CS3010. This material starts out with the basics of HTML, Javascript, and PHP.",
+        audience: "Computer Science Students",
+        level: "University",
+        topic: "HTML,CSS,JS,PHP",
         type: "courseMaterial",
         date: "August 2019",
         meta: "HTML: https://commons.wikimedia.org/wiki/File:HTML5_logo_and_wordmark.svg, JavaScript: https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg, PHP: https://commons.wikimedia.org/wiki/File:PHP-logo.svg",
@@ -316,23 +360,48 @@ const courseMats = [
         img: "https://github.com/LaneMatthewJ/lanematthewj.github.io/blob/main/src/assets/portfolioImages/introductions_to.png?raw=true",
         title: "Introduction to []",
         description: "This is a repository contining a number of introductions for single day courses. These topics range from \"what is code\", to robotics, to unit testing.",
+        audience: "Public",
+        level: "Introductory",
+        topic: "Python,HTML,JS",
         type: "courseMaterial",
-        date: "Varying",
+        date: "2019",
         meta: "Python: https://commons.wikimedia.org/wiki/File:Python-logo-notext.svg, jupyter: https://commons.wikimedia.org/wiki/File:Jupyter_logo.svg, Pytest https://commons.wikimedia.org/wiki/File:Pytest_logo.svg, ",
         link: "https://github.com/LaneMatthewJ/introductions_to/tree/master.",
     },
 ]
 
-const dataportfolio = [...journalsAndBooks, ...code, ...courseMats, ...presentations]
+const misc = [
+    {
+        title: "metnet-direct-auxiliary: Commercial copyright submission sponsored by ORNL, UT - Battelle, Certificate of U.S. Copyright Registration, Copyright Number: 90000309, Registration number: TXU002420465",
+        type: "misc",
+        authors: "M. Gopalakrishnan Meena, M.J. Lane, A.G. Geiger, and D.A. Jacobson",
+        date: "2024",
+        link: "https://publicrecords.copyright.gov/detailed-record/36264513."
+    }, 
+    {
+        title: "ORNL News highlight about paper plant-microbe interaction",
+        type: "misc",
+        authors: "",
+        date: "2024",
+        link: "https://www.ornl.gov/news/fungal-bouncers-patrol-plant-microbe-relationship",
+    },
+    {
+        title: "Using bipartite networks to determine interactions between analytes and chemical treatments: Invention Disclosure U.S. Nonprovisional Application No. 18/243,320, UTB Ref. 4963.1, WNJ Ref. 138974.209559-US",
+        type: "misc",
+        authors: "M.Gopalakrishnan Meena, M.J.Lane, J.Tannous, A.G.Geiger, D.A.Jacobson, T.A.Rush",
+        date: "2021",
+        link: "https://patentcenter.uspto.gov/applications/18243320",
+    }
 
+]
+
+const dataportfolio = [...journalsAndBooks, ...code, ...courseMats, ...presentations, ...misc]
 
 const socialprofils = {
     github: "https://github.com/lanEmatthewj",
     bluesky: "https://bsky.app/profile/friendshipships.bsky.social",
-    // facebook: "https://facebook.com",
     linkedin: "https://linkedin.com/in/lanematthewj",
     orcid: "https://orcid.org/0000-0002-7750-6822",
-    // twitter: "https://twitter.com",
 };
 export {
     meta,

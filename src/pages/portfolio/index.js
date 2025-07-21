@@ -22,11 +22,13 @@ export const Portfolio = () => {
 
 
   React.useEffect(() => {
-    const filteredData = dataportfolio.filter( project => {
+    const sortedPortfolio = dataportfolio.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const filteredData = sortedPortfolio.filter( project => {
       if (radioValue === 'all') return true
       return radioValue ===  project.type
     })
-    console.log("filteredData!!!1", radioValue, filteredData)
+
     setProjects(filteredData);
   }, [radioValue]);
 
