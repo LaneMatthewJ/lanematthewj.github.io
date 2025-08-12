@@ -1,0 +1,308 @@
+---
+title: "Calculating Network statistics using RWR_Netstats"
+author: "Matthew Lane"
+date: "2022-12-13"
+permalink: /posts/2022/12/rwr_netstats/
+tags:
+  - rwr
+  - R
+  - networks
+---
+
+With NetStats, you can generate statistics on your networks with a number of different functions, from generating basic network statistics on a paritcular network layer or multiplex to comparing individual networks against other networks or multiplexes. For example, if you have network layer acting as a gold set standard, you can use that network to test against another non-gold set network or multiplex to determine how closely related they are.  
+
+
+## 1. Introduction
+This document descibes the usage of RWR_netstats. This tool performs a suite of statistical tests on supplied networks. 
+
+## 2. Setup
+
+```R
+library(ggplot2)
+library(igraph)
+library(patchwork)
+library(RWRtoolkit)
+library(RColorBrewer)
+```
+
+
+Unlike other functions in the RWRtoolkit, the `RWR_netscore` function does not necessarily requre an `mpo` R object for all of its functionality (however, many of its functions do require an mpo object). 
+
+### Available Inputs:
+The current setup of RWR netstats takes a 4 posible input values to generate statistics. 
+- A path to an mpo rdata object
+- A path to an flist
+- A path to an edgelist
+
+ Edge lists are evaluated as: `<Source> <Target> <Weight>`. It should be noted that for the sake of computational speed, the `flist` method does not create an actual multiplex object, but only mimics the multiplex itself (i.e. it does not create the supra-adjacency matrix, nor its normalized counterpart).
+
+
+In order to demonstrate `RWR_netstats`, we will need to generate some networks. Let's generate 5 networks: 
+
+1. 3 layers to act work together as a multiplex
+2. 1 layer to act as a "gold standard" network. 
+3. 1 layer to act as another network against which to test our gold standard.
+
+### Network Layer Generation
+
+```R
+# a quick function for generating erdos.renyi layers
+create_layer <- function(n_vertices, probaility, weights){
+  # overwrite letters to contain letter combinations for more options
+  EXTRALETTERS <- c(LETTERS, sapply(LETTERS, function(x) paste0(x, LETTERS)))
+  layer <- igraph::erdos.renyi.game(n_vertices, probaility)
+  layer <- set_vertex_attr(
+              layer,
+              "name",
+              1:n_vertices,
+              EXTRALETTERS[1:n_vertices]
+            )
+  layer
+}
+
+set.seed(42)
+
+layer1 <- create_layer(30, 1/5) # will have vertices A - AD
+layer2 <- create_layer(15, 1/4) # will have vertices A - O
+layer3 <- create_layer(10, 1/3) # will have vertices A - J
+ref_layer <- create_layer(10, 1/3) # will have vertices A - J 
+interest_layer <- create_layer(20, 1/4) # will have vertices A - T 
+```
+
+### Writing Edgelists 
+We now have 5 sample networks all with similar vertices, but randomly created edges. We can create a multiplex out of 3 of them, and use the fourth to act as a reference network, and the 5th to act as a standalone network of interest. Additionally, we want our edges to have weights, so we will add an additional vector to their edgelists: 
+
+```R
+layer1_edgelist <- igraph::as_edgelist(layer1)
+layer2_edgelist <- igraph::as_edgelist(layer2)
+layer3_edgelist <- igraph::as_edgelist(layer3)
+ref_layer_edgelist <- igraph::as_edgelist(ref_layer)
+interest_layer_edgelist <- igraph::as_edgelist(interest_layer)
+
+
+# We need our edges to have weights:
+layer1_edgelist <- cbind(layer1_edgelist, rep(1, igraph::ecount(layer1)))
+layer2_edgelist <- cbind(layer2_edgelist, rep(1, igraph::ecount(layer2)))
+layer3_edgelist <- cbind(layer3_edgelist, rep(1, igraph::ecount(layer3)))
+ref_layer_edgelist <- cbind(ref_layer_edgelist, rep(1, igraph::ecount(ref_layer)))
+interest_layer_edgelist <- cbind(interest_layer_edgelist, 
+                                 rep(1, igraph::ecount(interest_layer))
+                           )
+
+# write to file: 
+write.table(layer1_edgelist, file="layer1.tsv", quote=F, sep="\t", row.names = F, col.names = F)
+write.table(layer2_edgelist, file="layer2.tsv", quote=F, sep="\t", row.names = F, col.names = F)
+write.table(layer3_edgelist, file="layer3.tsv", quote=F, sep="\t", row.names = F, col.names = F)
+write.table(ref_layer_edgelist, file="ref_layer.tsv", quote=F, sep="\t", row.names = F, col.names = F)
+write.table(interest_layer_edgelist, file="interest_layer.tsv", quote=F, sep="\t", row.names = F, col.names = F)
+```
+
+### Creating an FLIST
+With our files written to a edge lists we can now create an flist file to point to the first three: 
+
+```R
+file_paths <- c("layer1.tsv", "layer2.tsv", "layer3.tsv")
+layer_names <- c("layer1", "layer2", "layer3")
+groups <- c(1, 1, 1)
+
+flist_df <- data.frame(list(
+              filepaths = file_paths,
+              layernames = layer_names,
+              groups = groups
+            ))
+
+flist_filename <- "./multiplex_flist.tsv"
+write.table(flist_df, file = flist_filename, quote = F, sep = "\t", row.names = F, col.names = F)
+```
+
+### Creating the Multiplex
+Finally, we need to create our multiplex to use many of the functions offered within RWR_netstats:
+```{r}
+multiplex_filepath <- "./mutliplex.Rdata"
+RWRtoolkit::RWR_make_multiplex(
+                  flist_filename, 
+                  output = multiplex_filepath)
+```
+
+Note: It's often the case the the creation of the multiplex values takes quite a long while. In this case, it's often best to use the `flist` parameter when calculating the statistics, as the all of the statistics calculated within the `RWR_netstats` function are calculated without making use of the supra-adjacency matrices.
+
+
+## 4. Running RWR Netstats
+### Base Network Statistics
+When running `RWR_netstats`, there are many options we can use. All options (beyond the networks themselves) require only a boolean flag. First, to obtain base statistics for a given network layer or multiplex we simply use the `base_statistics` flag. This returns a dataframe for network containing the **number of nodes** in the network, the **edge count** and the network's **diameter**: 
+
+```R
+
+reflayer_filename <- "./ref_layer.tsv"
+netstats <- RWRtoolkit::RWR_netstats(
+  data = multiplex_filepath, 
+  network_1 = reflayer_filename,
+  basic_statistics = TRUE,
+)
+
+
+print("Base Statistics Net 1:")
+print(netstats$base_stats_net1)
+
+print("Multiplex Base Statistics:")
+print(netstats$base_stats_mpo)
+```
+
+> ```
+> #> [1] "Base Statistics Net 1:"
+> #>   network_name number_of_nodes number_of_edges diameter
+> #> 1    network_1              10              13        4
+> 
+> #> [1] "Multiplex Base Statistics:"
+> #>   network_name number_of_nodes number_of_edges diameter
+> #> 1       layer1              30              93        5
+> #> 2       layer2              15              29        3
+> #> 3       layer3              10              14        3
+> ```
+
+
+### Pairwise Layer Comparisons
+With `RWR_netstats` we can compare networks by calculating Jaccard similarity coefficient or overlap scores with respect to the shared edges between the networks of interest. 
+
+When calculating the Jaccard similarity coefficient between two layers (or two networks) A and B, we create sets of their edges: 
+
+$$
+jaccard(A,B) = \frac{E(A) \cap E(B)}{ E(A) \cup E(B) }
+$$
+
+The overlap scoring considers the weights of the network edges that exist in both the reference network (A) and the network of interest (B), divided by the total number of edges within the network of interest: 
+
+$$
+\hspace{2ex} overlap(A,B) = \frac{\sum_{e \in E(C)} W_{e} }{ | E(B) | }
+    \begin{cases}
+        C = A \cap B 
+    \end{cases}
+$$
+
+The `scoring_metric` parameter defines whether `jaccard` or `overlap` are used for scoring, however both methods can be employed by supplying `both` to the parameter. For the remainder of this vignette, we'll use `both`. 
+#### Comparing Two Separate Networks
+To compare two individual networks, we'll use our `ref_layer` and our `interest_layer_edgelist`. 
+
+```R
+
+refnet_path <- "./ref_layer.tsv"
+interest_net_path <- "./interest_layer.tsv"
+netstats <- RWRtoolkit::RWR_netstats(
+  network_1 = refnet_path,
+  network_2 = interest_net_path, 
+  net_to_net_similarity = T,
+  scoring_metric = "both"
+)
+
+netstats
+```
+> ```
+> #> $net_to_net_similarity
+> #>      jaccard    overlap
+> #> 1 0.07142857 0.08510638
+> ```
+
+#### Comparing Pairwise Metrics for All Layers of a Multiplex
+You'll likely wish to compare each of the layers within a multiplex network as well, this can be done using `pairwise_between_mpo_layer` flag to obtain the pairwise overlap scores. : 
+
+```R
+netstats <- RWRtoolkit::RWR_netstats(
+  data = multiplex_filepath, 
+  pairwise_between_mpo_layer = T, 
+  scoring_metric = "both"
+)
+print("The pairwise Jaccard Similarity Coefficients:")
+netstats$pairwise_between_mpo_layer_jaccard
+
+print("The pairwise overlap scores are:")
+netstats$pairwise_between_mpo_layer_overlap
+```
+
+> ```
+> #> [1] "The pairwise Jaccard Similarity Coefficients:"
+> netstats$pairwise_between_mpo_layer_jaccard
+> #>            layer1     layer2     layer3
+> #> layer1 1.00000000 0.05172414 0.08080808
+> #> layer2 0.05172414 1.00000000 0.07500000
+> #> layer3 0.08080808 0.07500000 1.00000000
+> 
+> #> [1] "The pairwise overlap scores are:"
+> netstats$pairwise_between_mpo_layer_overlap
+> #>            layer1    layer2    layer3
+> #> layer1 1.00000000 0.2068966 0.5714286
+> #> layer2 0.06451613 1.0000000 0.2142857
+> #> layer3 0.08602151 0.1034483 1.0000000
+> ```
+
+
+#### Comparing All Layers of a Multiplex against a Reference Network
+Just as you can compare a single layer to a reference network, it's also possible to compare all layers against a reference network by supplying the reference network as `network_1`: 
+
+```R
+netstats <- RWRtoolkit::RWR_netstats(
+  data = multiplex_filepath, 
+  network_1 = refnet_path,
+  multiplex_layers_to_refnet = T, 
+  scoring_metric = "both"
+)
+
+print("The Jaccard Similarity Coefficients between the reference network and the multiplex are:")
+netstats$multiplex_layers_to_refnet_jaccard
+print("The pairwise overlap scores between the reference network and the multiplex are:")
+netstats$multiplex_layers_to_refnet_overlap
+```
+
+> ```
+> #> [1] "The Jaccard Similarity Coefficients between the reference network and the > multiplex are:"
+> netstats$multiplex_layers_to_refnet_jaccard
+> #>     layer1     layer2     layer3 
+> #> 0.05376344 0.10344828 0.28571429
+> 
+> #> [1] "The pairwise overlap scores between the reference network and the multiplex > are:"
+> netstats$multiplex_layers_to_refnet_overlap
+> #>     layer1     layer2     layer3 
+> #> 0.05376344 0.10344828 0.28571429
+> 
+> ```
+
+
+### Calculating Network Statistics
+#### Calculating Tau
+With `RWR_netstats` it is also possible to calculate a `tau` vector for a particular multiplex given a reference network. This method takes the overlap score of each layer with respect to its reference layer, normalizes those scores (such that all scores sum to one), and then multiples said scores by the total number of layers. 
+
+```R
+netstats <- RWRtoolkit::RWR_netstats(
+  data = multiplex_filepath, 
+  network_1 = refnet_path,
+  calculate_tau_for_mpo = T
+)
+
+print("The calculated tau vector for our multiplex with respect to the reference network is: ")
+print(netstats$calculated_tau)
+```
+
+
+> ```
+> #> [1] "The calculated tau vector for our multiplex with respect to the reference > network is: "
+> #>    layer1    layer2    layer3 
+> #> 0.3641473 0.7006697 1.9351830
+> ```
+
+#### Calculating Exclusivity:
+Not all networks will have similar edges. By calculating the exclusivity of a multiplex's network layers, you can calculate the proportion of all edges in the multiplex that are found in each layer: 
+
+```R
+netstats <- RWRtoolkit::RWR_netstats(
+  data = multiplex_filepath, 
+  calculate_exclusivity_for_mpo = T
+)
+
+netstats$exclusivity
+```
+
+> ```
+> #>   n_layers pct_found
+> #> 1        1    0.8926
+> #> 2        2    0.0909
+> #> 3        3    0.0165
+> ```
